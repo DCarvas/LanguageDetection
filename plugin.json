@@ -1,11 +1,27 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-locale"
         version="1.0.0">
+
+    <!-- Define Android platform specifics -->
     <platform name="android">
+        <!-- Link to the actual Java class that implements the plugin -->
+        <source-file src="src/android/LocalePlugin.java" target-dir="src/com/outsystems/plugins" />
+        
+        <!-- Add the feature to the config.xml -->
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalePlugin">
                 <param name="android-package" value="com.outsystems.plugins.LocalePlugin"/>
             </feature>
         </config-file>
+    </platform>
+
+    <!-- Optional: Define Cordova engine requirements (adjust version as needed) -->
+    <engines>
+        <engine name="cordova" version=">=9.0.0"/>
+    </engines>
+
+    <!-- Optional: iOS platform specifics (if supported) -->
+    <platform name="ios">
+        <source-file src="src/ios/LocalePlugin.m" target-dir="src/ios"/>
     </platform>
 </plugin>
